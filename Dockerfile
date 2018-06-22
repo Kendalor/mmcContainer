@@ -1,9 +1,6 @@
-
+FROM ubuntu:16.04
 MAINTAINER Patrick Rehn <Kendalor@googlemail.com>
 
-RUN apt-get install -y wget
-
-FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV JAVA_HOME       /usr/lib/jvm/java-8-oracle
