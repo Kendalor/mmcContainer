@@ -1,37 +1,39 @@
-FROM ubuntu:16.04
-MAINTAINER Patrick Rehn <Kendalor@googlemail.com>
+FROM amd64/openjdk:8-jre
 
+LABEL maintainer="https://github.com/Kendalor/mmcContainer"
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV JAVA_HOME       /usr/lib/jvm/java-8-oracle
-ENV LANG            en_US.UTF-8
-ENV LC_ALL          en_US.UTF-8
+ARG USER=mcServer
+ARG GROUP=mcServer
+ARG PUID=845
+ARG PGID=845
 
+ENV PORT=25565 \
+    VANNILA_VERSION=1.12.2 \
+    PACK_VERSION=0.14.2 \
+    PACK_URL=https://media.forgecdn.net/files/2705/204/FTBInteractionsServer_1.4.2.zip 
 
-RUN \
- apt-get update && apt-get install -y openssh-server && \
- mkdir /var/run/sshd && \
- echo 'root:ftb' | chpasswd  && \
- sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
- sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd && \
- apt-get install -y wget && \
- apt-get update && \
- apt-get install -y --no-install-recommends locales && \
- locale-gen en_US.UTF-8 && \
- apt-get dist-upgrade -y && \
- apt-get --purge remove openjdk* && \
- echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
- echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" > /etc/apt/sources.list.d/webupd8team-java-trusty.list && \
- apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
- apt-get update && \
- apt-get install -y --no-install-recommends oracle-java8-installer oracle-java8-set-default && \
- apt-get clean all && \
- echo "export VISIBLE=now" >> /etc/profile
+RUN mkdir -p /opt /Server && \
+    echo "BUILD INFO: Created DIR" \
+    curl -sSL $PACK_URL \
+        -o /tmp/Files.zip && \
+    echo "BUILD INFO: DOWNLOADED SERVER FILES" \
+    unzip  /tmp/Files.zip -d /opt/Server && \
+    echo "BUILD INFO: Extracted Server Files" \
+    chmod ugo=rwx /opt/Server && \
+    echo "BUILD INFO: Change Owner of Server Files" \
+    rm /tmp/Files.zip && \
+    echo "BUILD INFO: Removed DOwnloaded Archive" \
+    addgroup -g $PGID -S $GROUP && \
+    echo "BUILD INFO: Added User Group" \
+    adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
+    echo "BUILD INFO: ADDED USER" \
+    chown -R $USER:$GROUP /opt/Server /Server \
+    echo "BUILD INFO: Changed Ownership of Server Dir"
 
+VOLUME /Server
 
-ENV NOTVISIBLE "in users profile"
+EXPOSE $PORT/tcp
 
+COPY files/ /
 
-EXPOSE 22
-EXPOSE 25565
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
