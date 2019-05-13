@@ -14,6 +14,7 @@ ENV PORT=25565 \
 
 RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" \
+    apk add --update --no-cache pwgen su-exec binutils gettext libintl shadow && \
     curl -sSL $PACK_URL \
         -o /tmp/Files.zip && \
     echo "BUILD INFO: DOWNLOADED SERVER FILES" \
@@ -36,4 +37,4 @@ EXPOSE $PORT/tcp
 
 COPY files/ /
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT [["/docker-entrypoint.sh"]
