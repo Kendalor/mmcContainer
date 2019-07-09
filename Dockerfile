@@ -28,8 +28,8 @@ RUN mkdir -p /opt /Server && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
     echo "BUILD INFO: ADDED USER" \
     chown -R $USER:$GROUP /opt/Server /Server \
-    echo "BUILD INFO: Changed Ownership of Server Dir"
-    ls Server
+    echo "BUILD INFO: Changed Ownership of Server Dir" \
+    ls Server \
 
 VOLUME /Server
 WORKDIR /Server
