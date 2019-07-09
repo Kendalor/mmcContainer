@@ -27,7 +27,7 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Removed DOwnloaded Archive" && \
     addgroup --gid $PGID  $GROUP && \
     echo "BUILD INFO: Added User Group" && \
-    adduser --uid $PUID --gid $GROUP --shell /bin/sh $USER && \
+    adduser --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server /Server  && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
