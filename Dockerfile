@@ -11,6 +11,8 @@ ENV PORT=25565 \
     VANNILA_VERSION=1.12.2 \
     PACK_VERSION=1.14.0 \
     PACK_URL=https://media.forgecdn.net/files/2720/980/FTBPresentsStoneblock2Server_1.14.0.zip
+
+VOLUME /Server
 RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" \
     apk add --update --no-cache pwgen su-exec binutils gettext libintl shadow && \
@@ -29,9 +31,8 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: ADDED USER" \
     chown -R $USER:$GROUP /opt/Server /Server \
     echo "BUILD INFO: Changed Ownership of Server Dir" \
-    ls Server \
+    ls Server
 
-VOLUME /Server
 WORKDIR /Server
 EXPOSE $PORT/tcp
 
