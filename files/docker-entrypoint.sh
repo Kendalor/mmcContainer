@@ -1,6 +1,6 @@
 #!/bin/sh -x
 
-SERVER_VOL=/Server
+SERVER_VOL=/opt/Server
 mkdir -p "$SERVER_VOL"
 
 
