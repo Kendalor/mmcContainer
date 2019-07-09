@@ -31,7 +31,7 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Changed Ownership of Server Dir"
 
 VOLUME /Server
-
+WORKDIR /Server
 EXPOSE $PORT/tcp
 
 ENTRYPOINT ["/ServerStart.sh"]
