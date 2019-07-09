@@ -12,7 +12,7 @@ ENV PORT=25565 \
     PACK_VERSION=1.14.0 \
     PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip
 
-VOLUME /Server
+
 RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
@@ -32,6 +32,8 @@ RUN mkdir -p /opt /Server && \
     chown -R $USER:$GROUP /opt/Server /Server  && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo "$(ls opt/Server)"
+VOLUME /Server
+
 COPY --chown=845:845 files/docker-entrypoint.sh /
 EXPOSE $PORT/tcp
 ENTRYPOINT ["/docker-entrypoint.sh"]
