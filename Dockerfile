@@ -10,7 +10,7 @@ ARG PGID=845
 ENV PORT=25565 \
     VANNILA_VERSION=1.12.2 \
     PACK_VERSION=1.14.0 \
-    PACK_URL=https://media.forgecdn.net/files/2720/980/FTBPresentsStoneblock2Server_1.14.0.zip
+    PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip
 
 VOLUME /Server
 RUN mkdir -p /opt /Server && \
