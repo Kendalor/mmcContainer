@@ -9,9 +9,8 @@ ARG PGID=845
 
 ENV PORT=25565 \
     VANNILA_VERSION=1.12.2 \
-    PACK_VERSION=0.14.2 \
-    PACK_URL=https://media.forgecdn.net/files/2705/204/FTBInteractionsServer_1.4.2.zip 
-
+    PACK_VERSION=1.14.0 \
+    PACK_URL=https://media.forgecdn.net/files/2720/980/FTBPresentsStoneblock2Server_1.14.0.zip
 RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" \
     apk add --update --no-cache pwgen su-exec binutils gettext libintl shadow && \
@@ -35,6 +34,4 @@ VOLUME /Server
 
 EXPOSE $PORT/tcp
 
-COPY files/ /
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/ServerStart.sh"]
