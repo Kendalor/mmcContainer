@@ -14,23 +14,23 @@ ENV PORT=25565 \
 
 VOLUME /Server
 RUN mkdir -p /opt /Server && \
-    echo "BUILD INFO: Created DIR" \
+    echo "BUILD INFO: Created DIR" && \
     apk add --update --no-cache pwgen su-exec binutils gettext libintl shadow && \
     curl -sSL $PACK_URL \
         -o /tmp/Files.zip && \
-    echo "BUILD INFO: DOWNLOADED SERVER FILES" \
+    echo "BUILD INFO: DOWNLOADED SERVER FILES" && \
     unzip  /tmp/Files.zip -d /opt/Server && \
-    echo "BUILD INFO: Extracted Server Files" \
+    echo "BUILD INFO: Extracted Server Files" && \
     chmod ugo=rwx /opt/Server && \
-    echo "BUILD INFO: Change Owner of Server Files" \
+    echo "BUILD INFO: Change Owner of Server Files" && \
     rm /tmp/Files.zip && \
-    echo "BUILD INFO: Removed DOwnloaded Archive" \
+    echo "BUILD INFO: Removed DOwnloaded Archive" && \
     addgroup -g $PGID -S $GROUP && \
-    echo "BUILD INFO: Added User Group" \
+    echo "BUILD INFO: Added User Group" && \
     adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
-    echo "BUILD INFO: ADDED USER" \
-    chown -R $USER:$GROUP /opt/Server /Server \
-    echo "BUILD INFO: Changed Ownership of Server Dir" \
+    echo "BUILD INFO: ADDED USER" && \
+    chown -R $USER:$GROUP /opt/Server /Server  && \
+    echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo $(ls /Server)
 COPY --chown=845:845 files/docker-entrypoint.sh /
 EXPOSE $PORT/tcp
