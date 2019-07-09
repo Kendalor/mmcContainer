@@ -11,7 +11,7 @@ echo "eula=true" > $SERVER_VOL/eula.txt
 
 
 # does settings-locale.sh exist ? If not create one
-if [ -f settings-local.sh ]; then
+if [ -f $SERVER_VOL/settings-local.sh ]; then
     echo "export JAVACMD=$JAVACMD; export MAX_RAM=$MAX_RAM ; export JAVA_PARAMETERS=$JAVA_PARAMETERS; " > $SERVER_VOL/settings-locale.sh
     chmod +x $SERVER_VOL/settings-local.sh
 fi
