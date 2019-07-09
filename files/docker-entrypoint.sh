@@ -6,14 +6,14 @@ mkdir -p "$SERVER_VOL"
 
 
 # Start Server
-echo "Dockerfile Params: $PORT, $PACK_VERSION, $PACK_URL, $MCVER, $JARFILE, $LAUNCHWRAPPERVERSION, $LAUNCHWRAPPER, $FORGEJAR, $JAVACMD, $MAX_RAM, $JAVA_PARAMETERS"
-echo "eula=true" > $SERVER_VOL/eula.txt
 echo "Entry Point Working"
+echo "eula=true" > $SERVER_VOL/eula.txt
+
 
 # does settings-locale.sh exist ? If not create one
 if [ -f settings-local.sh ]; then
-    echo "export JAVACMD=$JAVACMD; export MAX_RAM=$MAX_RAM ; export JAVA_PARAMETERS=$JAVA_PARAMETERS; " > /Server/settings-locale.sh
-    chmod +x /Server/settings-local.sh
+    echo "export JAVACMD=$JAVACMD; export MAX_RAM=$MAX_RAM ; export JAVA_PARAMETERS=$JAVA_PARAMETERS; " > $SERVER_VOL/settings-locale.sh
+    chmod +x $SERVER_VOL/settings-local.sh
 fi
 
 
