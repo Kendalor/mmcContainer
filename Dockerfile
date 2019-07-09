@@ -2,8 +2,8 @@ FROM amd64/openjdk:8-jre
 
 LABEL maintainer="https://github.com/Kendalor/mmcContainer"
 
-ARG USER=mcServer
-ARG GROUP=mcServer
+ARG USER=mcserver
+ARG GROUP=mcserver
 ARG PUID=845
 ARG PGID=845
 
