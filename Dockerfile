@@ -31,9 +31,7 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: ADDED USER" \
     chown -R $USER:$GROUP /opt/Server /Server \
     echo "BUILD INFO: Changed Ownership of Server Dir" \
-    ls Server
-
-WORKDIR /Server
+    echo $(ls /Server)
+COPY --chown=845:845 files/docker-entrypoint.sh /
 EXPOSE $PORT/tcp
-
-ENTRYPOINT ["/ServerStart.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

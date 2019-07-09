@@ -1,8 +1,4 @@
 #!/bin/sh -x
-set -euo pipefail
-
-id
-
 SERVER_VOL=/Server
 mkdir -p "$SERVER_VOL"
 
@@ -22,4 +18,4 @@ fi
 
 
 # Start Server
-exec $SU_EXEC /opt/Server/ServerStart.sh
+exec $SU_EXEC /ServerStart.sh
