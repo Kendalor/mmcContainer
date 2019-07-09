@@ -37,4 +37,4 @@ EXPOSE $PORT/tcp
 
 COPY files/ /
 
-ENTRYPOINT [["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
