@@ -29,9 +29,10 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: ADDED USER" \
     chown -R $USER:$GROUP /opt/Server /Server \
     echo "BUILD INFO: Changed Ownership of Server Dir"
+    ls Server
 
 VOLUME /Server
 WORKDIR /Server
 EXPOSE $PORT/tcp
 
-ENTRYPOINT ["/ServerStart.sh"]
+ENTRYPOINT ["ServerStart.sh"]
