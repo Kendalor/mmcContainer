@@ -36,4 +36,4 @@ RUN mkdir -p /opt /Server && \
 WORKDIR /Server
 EXPOSE $PORT/tcp
 
-ENTRYPOINT ["ServerStart.sh"]
+ENTRYPOINT ["/ServerStart.sh"]
