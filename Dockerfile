@@ -8,9 +8,16 @@ ARG PUID=845
 ARG PGID=845
 
 ENV PORT=25565 \
-    VANNILA_VERSION=1.12.2 \
     PACK_VERSION=1.14.0 \
-    PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip
+    PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip \
+    MCVER=1.12.2 \
+    JARFILE=minecraft_server.${MCVER}.jar \
+    LAUNCHWRAPPERVERSION=1.12 \
+    LAUNCHWRAPPER="net/minecraft/launchwrapper/${LAUNCHWRAPPERVERSION}/launchwrapper-${LAUNCHWRAPPERVERSION}.jar" \
+    FORGEJAR="FTBserver-1.12.2-14.23.5.2838-universal.jar" \
+    JAVACMD="java" \
+    MAX_RAM="2048M" \
+    JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10' 
 
 
 RUN mkdir -p /Server && \
@@ -31,7 +38,7 @@ RUN mkdir -p /Server && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /Server  && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
-    echo "$(ls opt/Server)"
+    echo "$(ls /Server)"
 VOLUME /Server
 
 COPY --chown=845:845 files/docker-entrypoint.sh /
