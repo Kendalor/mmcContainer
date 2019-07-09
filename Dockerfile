@@ -25,9 +25,9 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Change Owner of Server Files" && \
     rm /tmp/Files.zip && \
     echo "BUILD INFO: Removed DOwnloaded Archive" && \
-    addgroup -g $PGID -S $GROUP && \
+    addgroup --gid $PGID  $GROUP && \
     echo "BUILD INFO: Added User Group" && \
-    adduser -u $PUID -G $GROUP -s /bin/sh -SDH $USER && \
+    adduser --uid $PUID --gid $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server /Server  && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
