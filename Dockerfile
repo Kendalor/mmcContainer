@@ -15,7 +15,7 @@ ENV PORT=25565 \
 VOLUME /Server
 RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" && \
-    apt-get install --no-cache pwgen su-exec binutils gettext libintl shadow && \
+    apt-get install pwgen su-exec binutils gettext libintl shadow && \
     curl -sSL $PACK_URL \
         -o /tmp/Files.zip && \
     echo "BUILD INFO: DOWNLOADED SERVER FILES" && \
