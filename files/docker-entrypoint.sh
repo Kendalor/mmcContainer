@@ -6,8 +6,8 @@ mkdir -p "$SERVER_VOL"
 
 
 # Start Server
-echo "Dockerfile Params: $PORT, $VANILLA_VERSION, $PACK_VERSION, $PACK_URL"
-echo "eula=true" > /opt/Server/eula.txt
+echo "Dockerfile Params: $PORT, $VANILLA_VERSION, $PACK_VERSION, $PACK_URL. $MCVER, $JARFILE, $LAUNCHWRAPPERVERSION, $LAUNCHWRAPPER, $FORGEJAR, $JAVACMD, $MAX_RAM, $JAVA_PARAMETERS"
+echo "eula=true" > $SERVER_VOL/eula.txt
 echo "Entry Point Working"
-chmod +x /opt/Server/ServerStart.sh
-exec /opt/Server/ServerStart.sh
+chmod +x $SERVER_VOL/ServerStart.sh
+#exec $SERVER_VOL/ServerStart.sh
