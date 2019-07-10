@@ -48,4 +48,4 @@ fi
 # Start FTB Script
 
 chmod +x $SERVER_VOL/ServerStart.sh
-#exec $SERVER_VOL/ServerStart.sh
+exec $SERVER_VOL/ServerStart.sh
