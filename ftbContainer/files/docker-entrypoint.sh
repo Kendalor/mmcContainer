@@ -37,6 +37,9 @@ if [ -f $SERVER_VOL/eula.txt ] && eula_false ; then
     echo "eula=$EULA" > $SERVER_VOL/eula.txt
 fi
 
+if [ ! -f $SERVER_VOL/eula.txt ]; then
+    echo "eula=$EULA" > $SERVER_VOL/eula.txt
+fi
 # does settings-locale.sh exist ? If not create one
 echo "Checking for Settings Locale"
 sleep 1
