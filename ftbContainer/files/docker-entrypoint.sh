@@ -44,10 +44,10 @@ fi
 echo "Checking for Settings Locale"
 sleep 1
 if [ ! -f $SERVER_VOL/settings-local.sh ]; then
-        echo 'export JAVACMD="$JAVACMD" 
-    export MAX_RAM="$MAX_RAM"
-    export JAVA_PARAMETERS="$JAVA_PARAMETERS"
-    ' > $SERVER_VOL/settings-local.sh
+        echo "export JAVACMD='${JAVACMD}' 
+    export MAX_RAM='${MAX_RAM}'
+    export JAVA_PARAMETERS='${JAVA_PARAMETERS}'
+    " > $SERVER_VOL/settings-local.sh
     chmod +x $SERVER_VOL/settings-local.sh
 fi
 
