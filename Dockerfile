@@ -15,7 +15,7 @@ ENV PORT=25565 \
     EULA="true"
 
 
-RUN mkdir -p /opt /Server && \
+RUN mkdir -p -v /opt /Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
     curl -sSL $PACK_URL \
@@ -27,14 +27,14 @@ RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Change Owner of Server Files" && \
     rm /tmp/Files.zip && \
     echo "BUILD INFO: Removed DOwnloaded Archive" && \
-    addgroup --gid $PGID  $GROUP && \
+    addgroup --system --gid $PGID  $GROUP && \
     echo "BUILD INFO: Added User Group" && \
-    adduser --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
+    adduser --system --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server  && \
     ln -s /server /opt/Server && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
-    echo "$(ls /opt/Server), $(pwd), $(ls)"
+    echo "$(ls /opt/Server), $(pwd), $(ls), $(whoami)"
 
 COPY --chown=845:845 files/docker-entrypoint.sh /
 VOLUME /server
