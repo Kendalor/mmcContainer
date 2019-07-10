@@ -2,7 +2,7 @@
 
 SERVER_VOL=/opt/Server
 mkdir -p "$SERVER_VOL"
-su $USER
+whoami
 
 
 # Start Server
