@@ -27,4 +27,4 @@ fi
 
 
 chmod +x $SERVER_VOL/ServerStart.sh
-exec $SERVER_VOL/ServerStart.sh
+#exec $SERVER_VOL/ServerStart.sh
