@@ -14,7 +14,7 @@ ENV PORT=25565 \
     JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10' \
     EULA="true"
 
-VOLUME /opt/Server
+
 RUN mkdir -p /opt/Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
@@ -32,9 +32,11 @@ RUN mkdir -p /opt/Server && \
     adduser --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server  && \
+    ln -s /opt/Server /Server && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo "$(ls /Server), $(pwd), $(ls)"
 
 COPY --chown=845:845 files/docker-entrypoint.sh /
+VOLUME /server
 EXPOSE $PORT/tcp
 ENTRYPOINT ["/docker-entrypoint.sh"]
