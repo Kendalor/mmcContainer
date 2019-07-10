@@ -31,9 +31,6 @@ done
 rm -r /tmp/Files.zip
 rm -r /tmp/Server
 
-# Start Server
-echo "Entry Point Working"
-echo "eula=$EULA" > $SERVER_VOL/eula.txt
 
 # EULA Exists ? 
 if [ -f $SERVER_VOL/eula.txt ] && eula_false ; then
@@ -44,7 +41,7 @@ fi
 echo "Checking for Settings Locale"
 sleep 1
 if [ ! -f $SERVER_VOL/settings-local.sh ]; then
-    echo "export JAVACMD=$JAVACMD; export MAX_RAM=$MAX_RAM ; export JAVA_PARAMETERS=$JAVA_PARAMETERS; " > $SERVER_VOL/settings-locale.sh
+    echo "export JAVACMD=$JAVACMD; export MAX_RAM=$MAX_RAM ; export JAVA_PARAMETERS=$JAVA_PARAMETERS; " > $SERVER_VOL/settings-local.sh
     chmod +x $SERVER_VOL/settings-local.sh
 fi
 
