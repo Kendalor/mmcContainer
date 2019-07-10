@@ -24,9 +24,9 @@ for i in $(ls /tmp/Server); do
         echo "File ${i} in opt/Server found"
         rm -r $SERVER_VOL/${i}
         echo "Deleted File/Dir ${i}"
-        cp -r /tmp/Server/${i} $SERVER_VOL/${i}
-        echo "Copied ${i} to Server Dir"
     fi
+    cp -r /tmp/Server/${i} $SERVER_VOL/${i}
+    echo "Copied ${i} to Server Dir"
 done
 rm -r /tmp/Files.zip
 rm -r /tmp/Server
