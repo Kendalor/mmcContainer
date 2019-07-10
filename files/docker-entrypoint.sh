@@ -9,6 +9,12 @@ mkdir -p "$SERVER_VOL"
 echo "Entry Point Working"
 echo "eula=true" > $SERVER_VOL/eula.txt
 
+echo "Downlaoding STuff"
+curl -sSL $PACK_URL -o /tmp/Files.zip
+echo "BUILD INFO: DOWNLOADED SERVER FILES"
+unzip  /tmp/Files.zip -d /opt/Server
+
+
 
 # does settings-locale.sh exist ? If not create one
 if [ -f $SERVER_VOL/settings-local.sh ]; then
