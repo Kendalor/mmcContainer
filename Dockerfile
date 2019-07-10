@@ -15,7 +15,7 @@ ENV PORT=25565 \
     EULA="true"
 
 
-RUN mkdir -p -v /opt /Server && \
+RUN mkdir -p -v /opt/Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
     echo "BUILD INFO: Extracted Server Files" && \
