@@ -29,8 +29,8 @@ RUN mkdir -p -v /opt/Server && \
     su $USER && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo "$(ls /opt/Server), $(pwd), $(ls), $(whoami)"
-    
-USER $USER
+
+USER mcserver
 COPY --chown=845:845 files/docker-entrypoint.sh /
 VOLUME /server
 EXPOSE $PORT/tcp
