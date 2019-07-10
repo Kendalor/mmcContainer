@@ -32,7 +32,7 @@ RUN mkdir -p /opt /Server && \
     adduser --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server  && \
-    ln -s /opt/Server /Server && \
+    ln -s /server /opt/Server && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo "$(ls /opt/Server), $(pwd), $(ls)"
 
