@@ -18,21 +18,15 @@ ENV PORT=25565 \
 RUN mkdir -p -v /opt /Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
-    curl -sSL $PACK_URL \
-        -o /tmp/Files.zip && \
-    echo "BUILD INFO: DOWNLOADED SERVER FILES" && \
-    unzip  /tmp/Files.zip -d /opt/Server && \
     echo "BUILD INFO: Extracted Server Files" && \
     chmod ugo=rwx /opt/Server && \
     echo "BUILD INFO: Change Owner of Server Files" && \
-    rm /tmp/Files.zip && \
-    echo "BUILD INFO: Removed DOwnloaded Archive" && \
     addgroup --system --gid $PGID  $GROUP && \
     echo "BUILD INFO: Added User Group" && \
     adduser --system --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
     echo "BUILD INFO: ADDED USER" && \
     chown -R $USER:$GROUP /opt/Server  && \
-    ln -s /server /opt/Server && \
+    su $USER && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
     echo "$(ls /opt/Server), $(pwd), $(ls), $(whoami)"
 
