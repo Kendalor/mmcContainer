@@ -15,7 +15,7 @@ ENV PORT=25565 \
     EULA="true"
 
 
-RUN mkdir -p /opt/Server && \
+RUN mkdir -p /opt /Server && \
     echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
     curl -sSL $PACK_URL \
@@ -34,7 +34,7 @@ RUN mkdir -p /opt/Server && \
     chown -R $USER:$GROUP /opt/Server  && \
     ln -s /opt/Server /Server && \
     echo "BUILD INFO: Changed Ownership of Server Dir" && \
-    echo "$(ls /Server), $(pwd), $(ls)"
+    echo "$(ls /opt/Server), $(pwd), $(ls)"
 
 COPY --chown=845:845 files/docker-entrypoint.sh /
 VOLUME /server
