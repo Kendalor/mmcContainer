@@ -19,7 +19,7 @@ unzip  /tmp/Files.zip -d /tmp/Server
 
 # Update Logic
 # Overwrite every File/Dir in the Server directory if the corresponding file/dir in the archive exists
-for i in $(ls temp/Server); do
+for i in $(ls /tmp/Server); do
     if [ -e /opt/Server/${i} ]; then
         echo "File ${i} in opt/Server found"
         rm -r $SERVER_VOL/${i}
