@@ -10,7 +10,7 @@ Docker Container to Start FTB Modpack Servers
     -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
     -e "EULA=true" \
     --name ftb_server \
-    Kendalor/mmc_ftb:latest`
+    Kendalor/mmc_ftb:latest
 
 # What Happens Here:
 
@@ -31,6 +31,7 @@ Docker Container to Start FTB Modpack Servers
 * `MAX_RAM` : Max Ram used by the Server, default is 2048M. Used to create the settings-local.sh in the Server dir.
 * `JAVA_PARAMETERS` : java Args to append. Used to create the settings-local.sh in the Server dir.
 * `EULA` : Accept the eula of mojang.
+
 
 
 
