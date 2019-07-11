@@ -16,19 +16,11 @@ ENV PORT=25565 \
 
 
 RUN mkdir -p -v /opt/Server && \
-    echo "BUILD INFO: Created DIR" && \
     apt-get install curl && \
-    echo "BUILD INFO: Extracted Server Files" && \
     chmod ugo=rwx /opt/Server && \
-    echo "BUILD INFO: Change Owner of Server Files" && \
     addgroup --system --gid $PGID  $GROUP && \
-    echo "BUILD INFO: Added User Group" && \
     adduser --system --uid $PUID --ingroup $GROUP --shell /bin/sh $USER && \
-    echo "BUILD INFO: ADDED USER" && \
-    chown -R $USER:$GROUP /opt/Server  && \
-    su $USER && \
-    echo "BUILD INFO: Changed Ownership of Server Dir" && \
-    echo "$(ls /opt/Server), $(pwd), $(ls), $(whoami)"
+    chown -R $USER:$GROUP /opt/Server
 
 USER mcserver
 COPY --chown=845:845 files/docker-entrypoint.sh /
