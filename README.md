@@ -3,9 +3,16 @@ Docker Container to Start FTB Modpack Servers
 
 ## Quickstart
 
-`docker run -d -p 22229:25565 -v /home/myName/ftbServer:/opt/Server -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" -e "EULA=true" --name ftb_server Kendalor/mmc_ftb:latest`
+    docker run  \
+    -d \
+    -p 22229:25565 \
+    -v /home/myName/ftbServer:/opt/Server \
+    -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
+    -e "EULA=true" \
+    --name ftb_server \
+    Kendalor/mmc_ftb:latest`
 
-What Happens Here:
+# What Happens Here:
 
 * `-d` : Detached Mode, so container starts as a daemon
 * `-p` : The Port 22229 of the Host is forwarded to the 25565 Container Port
