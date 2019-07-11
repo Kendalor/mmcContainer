@@ -11,7 +11,7 @@ docker run  \
 -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
 -e "EULA=true" \
 --name ftb_server \
-Kendalor/mmc_ftb:latest
+kendalor/ftb_server:latest
 ```
 # What Happens Here:
 
@@ -20,7 +20,7 @@ Kendalor/mmc_ftb:latest
 * `-v` : The dir /home/myName/ftbServer dir is linked to server dir in Container, **IMPORANT** to update the Server
 * `-e PACK_URL` : This defines the ModPack which is run in the container, only works with FTB Packs Currently 
 * `--name` : Name of the running Container, easier to use as a random assigned string
-* `Kendalor/mmc_ftb:latest` : Reference to the Image used to run the Container
+* `kendalor/ftb_server:latest` : Reference to the Image used to run the Container
 
 
 ## Environemnt Variables (Selecting the Modpack)
@@ -57,7 +57,7 @@ docker run  \
 -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
 -e "EULA=true" \
 --name ftb_server \
-Kendalor/mmc_ftb:latest
+kendalor/ftb_server:latest
 ```
     
 
