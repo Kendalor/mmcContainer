@@ -11,8 +11,8 @@ ENV PORT=25565 \
     PACK_URL="https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
     JAVACMD="java" \
     MAX_RAM="2048M" \
-    JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10' \
-    EULA="true"
+    JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10  -Dfml.queryResult=confirm' \
+    EULA="true" 
 
 
 RUN mkdir -p -v /opt/Server && \

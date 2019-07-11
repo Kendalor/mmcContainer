@@ -37,3 +37,20 @@ Docker Container to Start FTB Modpack Servers
 
 ## Updating
 
+Updating should be quite Easy
+
+1. Stop the current Server: 
+    docker stop ftb_server
+2. Remove the current Server (world is stored in the volume):
+    docker rm ftb_server
+3. Restart Server with new Server Files:
+    docker run  \
+    -d \
+    -p 22229:25565 \
+    -v /home/myName/ftbServer:/opt/Server \
+    -e "PACK_URL=https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
+    -e "EULA=true" \
+    --name ftb_server \
+    Kendalor/mmc_ftb:latest
+    
+
