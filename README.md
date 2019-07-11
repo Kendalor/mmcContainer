@@ -39,11 +39,16 @@ Docker Container to Start FTB Modpack Servers
 
 Updating should be quite Easy
 
-1. Stop the current Server: 
+1. Stop the current Server:
+
     docker stop ftb_server
+
 2. Remove the current Server (world is stored in the volume):
+
     docker rm ftb_server
+
 3. Restart Server with new Server Files:
+
     docker run  \
     -d \
     -p 22229:25565 \
