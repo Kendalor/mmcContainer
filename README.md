@@ -1,6 +1,6 @@
 [![](https://images.microbadger.com/badges/version/kendalor/ftb_server.svg)](https://microbadger.com/images/kendalor/ftb_server "Get your own version badge on microbadger.com")    [![](https://images.microbadger.com/badges/image/kendalor/ftb_server.svg)](https://microbadger.com/images/kendalor/ftb_server "Get your own image badge on microbadger.com")
 # ftb_server
-Docker Container to Start FTB Modpack Servers
+Docker Container to start FTB Modpack Servers
 
 ## Quickstart
 ```bash
@@ -17,8 +17,8 @@ Kendalor/mmc_ftb:latest
 
 * `-d` : Detached Mode, so container starts as a daemon
 * `-p` : The Port 22229 of the Host is forwarded to the 25565 Container Port
-* `-v` : The dir /home/myName/ftbServer dir is linked to Server dir in Container, **IMPORANT** to update the Server
-* `-e PACK_URL` : This defines the Pack which is run in the container, only works with FTB Packs Currently 
+* `-v` : The dir /home/myName/ftbServer dir is linked to server dir in Container, **IMPORANT** to update the Server
+* `-e PACK_URL` : This defines the ModPack which is run in the container, only works with FTB Packs Currently 
 * `--name` : Name of the running Container, easier to use as a random assigned string
 * `Kendalor/mmc_ftb:latest` : Reference to the Image used to run the Container
 
