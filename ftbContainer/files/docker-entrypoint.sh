@@ -16,18 +16,24 @@ echo "Downlaoding STuff"
 curl -sSL $PACK_URL -o /tmp/Files.zip
 echo "BUILD INFO: DOWNLOADED SERVER FILES"
 unzip  /tmp/Files.zip -d /tmp/Server
-
-# Update Logic
-# Overwrite every File/Dir in the Server directory if the corresponding file/dir in the archive exists
-for i in $(ls /tmp/Server); do
-    if [ -e /opt/Server/${i} ]; then
-        echo "File ${i} in opt/Server found"
-        rm -r $SERVER_VOL/${i}
-        echo "Deleted File/Dir ${i}"
+echo "comapring JSONS"
+if [ -f /opt/Server/version.json]; then
+    echo "already running Server found"
+    if [ ! cmp --silent /opt/Server/version.json /tmp/Server/version.json ]; then
+        echo "Json files differ, Update"
+        # Update Logic
+        # Overwrite every File/Dir in the Server directory if the corresponding file/dir in the archive exists
+        for i in $(ls /tmp/Server); do
+            if [ -e /opt/Server/${i} ]; then
+                echo "File ${i} in opt/Server found"
+                rm -r $SERVER_VOL/${i}
+                echo "Deleted File/Dir ${i}"
+            fi
+            cp -r /tmp/Server/${i} $SERVER_VOL/${i}
+            echo "Copied ${i} to Server Dir"
+        done
     fi
-    cp -r /tmp/Server/${i} $SERVER_VOL/${i}
-    echo "Copied ${i} to Server Dir"
-done
+fi
 rm -r /tmp/Files.zip
 rm -r /tmp/Server
 
