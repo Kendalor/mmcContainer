@@ -19,7 +19,7 @@ unzip  /tmp/Files.zip -d /tmp/Server
 echo "comapring JSONS"
 
 echo "already running Server found"
-if [ ! cmp --silent /opt/Server/version.json /tmp/Server/version.json ]; then
+if ! cmp --silent /opt/Server/version.json /tmp/Server/version.json ; then
     echo "Json files differ, Update"
     # Update Logic
     # Overwrite every File/Dir in the Server directory if the corresponding file/dir in the archive exists
