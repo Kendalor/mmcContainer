@@ -11,16 +11,16 @@ eula_false() {
 }
 
 
-#Downlaod Server Files and Extract
-echo "Downlaoding STuff"
+#Download Server Files and Extract
+echo "Downloading server files"
 curl -sSL $PACK_URL -o /tmp/Files.zip
 echo "BUILD INFO: DOWNLOADED SERVER FILES"
 unzip  /tmp/Files.zip -d /tmp/Server
-echo "comapring JSONS"
+echo "Comparing JSONS"
 
-echo "already running Server found"
+echo "Already running Server found"
 if ! cmp --silent /opt/Server/version.json /tmp/Server/version.json ; then
-    echo "Json files differ, Update"
+    echo "Json files differ, Updating"
     # Update Logic
     # Overwrite every File/Dir in the Server directory if the corresponding file/dir in the archive exists
     for i in $(ls /tmp/Server); do
