@@ -57,6 +57,7 @@ export JAVA_PARAMETERS='${JAVA_PARAMETERS}'" > $SERVER_VOL/settings-local.sh
 fi
 
 # Start FTB Script
-
+chmod +x $SERVER_VOL/settings.sh
+chmod +x $SERVER_VOL/settings-local.sh
 chmod +x $SERVER_VOL/ServerStart.sh
 exec $SERVER_VOL/ServerStart.sh
