@@ -61,7 +61,7 @@ pwd
 cd $SERVER_VOL
 pwd
 chmod +x $SERVER_VOL/Install.sh
-exec $SERVER_VOL/Install.sh
+. ./Install.sh
 chmod +x $SERVER_VOL/settings.sh
 chmod +x $SERVER_VOL/settings-local.sh
 chmod +x $SERVER_VOL/ServerStart.sh
