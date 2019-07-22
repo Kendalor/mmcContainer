@@ -60,8 +60,8 @@ fi
 pwd
 cd $SERVER_VOL
 pwd
-chmod +x $SERVER_VOL/install.sh
-exec $SERVER_VOL/install.sh
+chmod +x $SERVER_VOL/Install.sh
+exec $SERVER_VOL/Install.sh
 chmod +x $SERVER_VOL/settings.sh
 chmod +x $SERVER_VOL/settings-local.sh
 chmod +x $SERVER_VOL/ServerStart.sh
