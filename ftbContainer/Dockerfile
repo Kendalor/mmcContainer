@@ -12,7 +12,8 @@ ENV PORT=25565 \
     JAVACMD="java" \
     MAX_RAM="2048M" \
     JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10  -Dfml.queryResult=confirm' \
-    EULA="true" 
+    EULA="true" \
+    NO_UPDATE="true"
 
 
 RUN mkdir -p -v /opt/Server && \
