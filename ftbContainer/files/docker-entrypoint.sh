@@ -62,9 +62,17 @@ fi
 pwd
 cd $SERVER_VOL
 pwd
-chmod +x $SERVER_VOL/Install.sh
-. ./Install.sh
-chmod +x $SERVER_VOL/settings.sh
-chmod +x $SERVER_VOL/settings-local.sh
-chmod +x $SERVER_VOL/ServerStart.sh
+if [-f $SERVER_VOL/Install.sh ]; then 
+    chmod +x $SERVER_VOL/Install.sh
+    . ./Install.sh
+fi
+if [-f $SERVER_VOL/settings.sh]; then
+    chmod +x $SERVER_VOL/settings.sh
+fi
+if [ -f chmod +x $SERVER_VOL/settings-local.sh]; then
+    chmod +x $SERVER_VOL/settings-local.sh
+fi
+if [-f $SERVER_VOL/ServerStart.sh]; then
+    chmod +x $SERVER_VOL/ServerStart.sh
+fi
 exec $SERVER_VOL/ServerStart.sh
