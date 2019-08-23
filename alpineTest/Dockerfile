@@ -7,11 +7,13 @@ ARG PUID=845
 ARG PGID=845
 
 ENV PORT=25565 \
+    PACK_NAME=
     PACK_URL="https://media.forgecdn.net/files/2727/712/FTBPresentsStoneblock2Server_1.15.0.zip" \
     JAVACMD="java" \
     MAX_RAM="2048M" \
     JAVA_PARAMETERS='-XX:+UseParNewGC -XX:+CMSIncrementalPacing -XX:+CMSClassUnloadingEnabled -XX:ParallelGCThreads=5 -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10' \
-    EULA="true"
+    EULA="true" \
+    AUTO_UPDATE="true"
 
 
 RUN mkdir -p -v /opt/Server && \
@@ -27,7 +29,7 @@ RUN mkdir -p -v /opt/Server && \
     echo "$(ls /opt/Server), $(pwd), $(ls), $(whoami)"
 
 USER mcserver
-COPY --chown=845:845 files/docker-entrypoint.sh /
+COPY files/* /
 VOLUME /server
 EXPOSE $PORT/tcp
 ENTRYPOINT ["/docker-entrypoint.sh"]
